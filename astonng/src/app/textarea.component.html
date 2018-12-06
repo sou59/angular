@@ -1,0 +1,29 @@
+<!-- Exos créer composant -->
+  <div class="container pt-5">
+
+    <h1>My app message</h1>
+
+    <textarea name="message" id="message" cols="30" rows="10" 
+      #content  
+      [maxLength]="maxLen"  
+      class="form-control" 
+      [(ngModel)]="name" 
+      [(ngModel)]="text" 
+      [ngClass]=" { 'rouge': isValidMacLength()   } ">
+    </textarea>
+    <!--(keyup)="counter($event)"--> 
+      
+    <!--pas disabled sinon on ne peut pas aller en arrière : [disabled]="taille > 140"-->
+    <div class="clearfix">
+
+      <p class="float-right">{{ text.length }} / {{ content.maxLength }}</p>
+
+      <p *ngIf=" isValidMacLength() " style="color: red;">
+        Vous avez atteint le maximum de caractères autorisé !
+      </p>
+
+    </div>
+
+    <button (click)="send()" [disabled]=" !text " class="btn btn-primary">{{ textButton }}</button>
+
+  </div>

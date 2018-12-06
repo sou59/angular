@@ -1,0 +1,53 @@
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-md-8">
+  <!--
+        <app-textarea [maxLen]="20"></app-textarea>
+        -->
+
+        <app-toggle-box>
+          <p>Hello transclusion</p>
+        </app-toggle-box>
+
+        {{ 'hello' | uppercase }}
+
+        <!-- pipe unix : tunnel -->
+
+
+        <app-toggle-box>
+          <h5>Hello transclusion</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur temporibus vel alias enim molestias culpa ratione dolorum ad odit maxime et, est, quidem minus doloremque quasi quis modi voluptates officiis.</p>
+        </app-toggle-box>
+
+
+        <!-- NE PAS OUBLIER LES PETITES COTES, pour évenement textEven prednre un alis  -->
+        <app-textarea [textButton]=" 'Envoyer' " (onMessage)="add($event)"></app-textarea>
+
+        <div class="pt-5" *ngFor="let msg of messages; let i=index ">
+          <!--  <p> {{ msg | json }}</p>
+                <p> Texte :  {{ msg.id }} </p> -->
+                {{msg.i}}
+            <p> Texte :  {{ msg.text }}</p>
+            <!--  <p> Date :  {{ msg.date | date:'dd/MM/y H:m:s' }}</p> -->
+            <p> Il y a  :  {{ msg.date | dateDistance }}</p>
+            <p> Date du jour :  {{ msg.date }}</p>
+
+         <button (click)="spliceDiv(i)"  type="submit">Supprimer</button>
+        </div>
+
+        <button></button>
+
+    </div>
+
+    <div class="col-md-4">
+
+    </div>
+
+  </div>
+
+  <app-star-component></app-star-component>
+
+
+</div>

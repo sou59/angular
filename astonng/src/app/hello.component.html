@@ -1,0 +1,87 @@
+
+<div class ="container">
+  
+        <div class="row">
+            <div class="col-md-8">
+              <h1 [style.color]="message == 'hello' ? 'red':'green' ">Welcome to {{ title }}!</h1>
+            
+              <input class="form-control" type="text" [(ngModel)]="message">{{ message }}
+      
+              <!-- property doit être une expression ici si message vide button disabled sinon  -->
+              <button [disabled]="!message" class="btn btn-primary">Valider</button>
+      
+              <h2 [innerHTML]=" '<span>Hi everyone' + message + '</span>' "></h2>
+              <p [style.color]=" changeColor()">{{ message }} {{ changeColor() }}</p>
+            
+              <!-- selecteur déclaré hello.component.ts
+              s'affiche au milieu
+              pour compatibilité div app-hello
+              <app-hello></app-hello>
+              <div app-hello></div>
+              -->
+              <!--Directive-->
+              <h3 [ngClass]="{'favoriteColor': 1 === 0} ">Toto</h3>
+              <h3 [ngStyle]="{'color': 'green'} ">Toto</h3>
+      
+            </div>
+           
+            <div class="col-md-4">
+              <h2>Column</h2>
+              <p>{{ data }} </p>
+              <p>{{ 1+1 }} </p>
+              <p>{{ 'Le résultat est : ' + (1+1) }} </p>
+            </div>
+      
+          </div>
+            <hr>
+            <div>
+              <!-- Event binding, créer une fonction dans class. 
+              Ne pas oublier d'ajouter ici $event, sinon le evnet est undefined 
+               <h2 (click)="clickMe($event)">Formulaire</h2>
+              -->
+             
+              <h2 (click)="$event.target.style.color='green'">Formulaire</h2>
+      
+              <!-- envoie l'info ne fais qu'emettre-->
+              <input type="text" (input)=" changeName($event) " />
+              <hr>
+              
+              <!-- est capable de recevoir et d'emettre, surveille l'état de la varaible name
+                 ngModel ne fonctionne que sur les champs de formulaire-->
+              <input type="text" [(ngModel)]="name" />
+      
+              <p>{{ name }}</p>
+      
+              <hr>
+      
+              <div>
+      
+      
+                <!-- condition "false", "true", "1 === 1", ou name, si il y a qchose dans input le lorem s'affiche ou pas-->
+                <p *ngIf="name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odit ipsam, culpa.</p>
+      
+                <!-- si un name existe, l'afficher, sinon afficher la template Attention une seule *-->
+                <div *ngIf="name; else myTpl">
+                  {{name}}
+                </div>
+      
+                <ng-template #myTpl>
+                  <h4>Template cachée</h4>
+                </ng-template>
+              </div>
+
+      
+            </div>
+
+            
+            <input type="text" [(ngModel)]="color">
+
+            <div [ngStyle]="{ 'backgroundColor': colorChange() }">
+              Toto va à la plage
+            </div>
+      
+      </div>
+      
+      
+      
+      

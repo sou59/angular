@@ -1,0 +1,8 @@
+<h3 (click)="visible=!visible">Titre de ma toogle-box</h3>
+<h3 (click)="visible=!visible">{{ visible ? 'Afficher' : 'Montrer'}}</h3>
+{{ visible | json }}
+<p [hidden]="visible">
+ <ng-content></ng-content>
+</p>
+
+
