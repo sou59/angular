@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // utilisation des formulaires
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { contractTypes } from '../../data/jobs';
+import { ContractType } from '../../models/ContractType';
 
 @Component({
   selector: 'app-add',
@@ -11,6 +13,10 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 //lifecyle, composant créé, instancié
 //ici on utilise l'interface oninit
 export class AddComponent implements OnInit {
+
+  // tableau de contrat type
+  contractTypes: ContractType[] = contractTypes;
+
 //génération d'un groupe de champs
   form: FormGroup;
 
