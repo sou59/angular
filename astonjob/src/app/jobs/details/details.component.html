@@ -1,3 +1,12 @@
-<p>
-  details works!
-</p>
+<ul class="pt-5" *ngFor="let job of jobs;">
+    <li> Id :  {{ job.id }}</li>
+    <li> Title :  {{ job.title }}</li>
+    <li> Company :  {{ job.company }}</li>
+    <li> City :  {{ job.city }}</li>
+    <li> Zip Code :  {{ job.zipcode }}</li>
+    <li> Description :  {{ job.description }}</li>
+    <li> Contract type :  {{ job.contractType }}</li>
+    <li> Start date :  {{ job.startDate | date:'dd/MM/y H:m:s'  }}</li>
+</ul>
+
+<button type="submit">Modifier</button>

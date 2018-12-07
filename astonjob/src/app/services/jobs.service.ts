@@ -18,6 +18,8 @@ export class JobsService {
   }
 
   find(id: Number) {
+    return this.http.get<Job[]>(API_BASE_URL + id)
+      .pipe(map(res => res));
 
   }
 

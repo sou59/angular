@@ -10,12 +10,12 @@ import { Job } from 'src/app/models/Job';
 export class ListComponent implements OnInit {
 
   jobs: Job[] = [];
-  
+
   constructor(private jobsService: JobsService) { }
 
   ngOnInit() { // comme un constructeur initialise la récup des données
     this.jobsService.all().subscribe(
-      data => { // récupère la réponse, données
+      data => { // récupère la réponse: les données du formulaire
         this.jobs = data;
       }
     );
