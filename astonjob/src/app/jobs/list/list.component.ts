@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JobsService } from '../../services/jobs.service';
+import { Job } from 'src/app/models/Job';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  jobs: Job[] = [];
+  
+  constructor(private jobsService: JobsService) { }
 
-  ngOnInit() {
+  ngOnInit() { // comme un constructeur initialise la récup des données
+    this.jobsService.all().subscribe(
+      data => { // récupère la réponse, données
+        this.jobs = data;
+      }
+    );
   }
-
 }

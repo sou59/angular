@@ -15,6 +15,7 @@ import { AddComponent } from './jobs/add/add.component';
 import { ListComponent } from './jobs/list/list.component';
 import { DetailsComponent } from './jobs/details/details.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -50,7 +51,8 @@ const routes: Route[] = [
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

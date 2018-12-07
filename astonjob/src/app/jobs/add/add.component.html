@@ -39,7 +39,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-select placeholder="Favorite food">
+          <mat-select placeholder="Favorite food" formControlName="contractType">
             <mat-option *ngFor="let contractType of contractTypes" [value]="contractType.id">
               {{contractType.label}}
             </mat-option>
