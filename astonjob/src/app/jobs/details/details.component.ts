@@ -13,11 +13,7 @@ export class DetailsComponent implements OnInit {
   constructor(private jobsService: JobsService) { }
 
   ngOnInit() {
-    this.jobsService.find(this.id).subscribe({
-      jobs => {
-        this.jobs = jobs;
-      }
-    });
+    this.jobsService.find(this.id).subscribe();
   }
 
 }
