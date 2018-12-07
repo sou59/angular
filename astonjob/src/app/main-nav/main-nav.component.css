@@ -15,3 +15,20 @@
   top: 0;
   z-index: 1;
 }
+
+.sidenav-content {
+  margin: 16px;
+}
+
+.toto {
+  background-color: green;
+}
+
+.tata {
+  background-color: green;
+}
+
+.titi {
+  background-color: purple;
+
+}
