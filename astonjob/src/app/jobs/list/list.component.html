@@ -1,5 +1,19 @@
-{{ jobs | json}}
+
 
 <!--affichage des données faire un ngfor
 fair delete et update
 -->
+
+<ul class="pt-5" *ngFor="let job of jobs;">
+    <li> Id :  {{ job.id }}</li>
+    <li> Title :  {{ job.title }}</li>
+    <li> Company :  {{ job.company }}</li>
+    <li> City :  {{ job.city }}</li>
+    <li> Zip Code :  {{ job.zipcode }}</li>
+    <li> Description :  {{ job.description }}</li>
+    <li> Contract type :  {{ job.contractType }}</li>
+    <li> Start date :  {{ job.startDate | date:'dd/MM/y H:m:s'  }}</li>
+
+ <button type="submit">Supprimer</button>
+</ul>
+
