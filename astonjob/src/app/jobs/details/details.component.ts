@@ -10,10 +10,16 @@ import { Job } from 'src/app/models/Job';
 export class DetailsComponent implements OnInit {
   id: number;
   jobs: Job[] = [];
+
   constructor(private jobsService: JobsService) { }
 
   ngOnInit() {
-    this.jobsService.find(this.id).subscribe();
+
+    this.jobsService.find(this.id);
+    /*.subscribe(
+      data => { // récupère la réponse: les données du formulaire
+        this.id = data;
+      });*/
+    }
   }
 
-}

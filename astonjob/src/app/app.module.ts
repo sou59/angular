@@ -1,9 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatInputModule, MatFormFieldModule, MatCardModule, 
-  MatNativeDateModule, MatSelectModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatCardModule,
+  MatNativeDateModule,
+  MatSelectModule } from '@angular/material';
+
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Route } from '@angular/router';
@@ -16,6 +25,8 @@ import { ListComponent } from './jobs/list/list.component';
 import { DetailsComponent } from './jobs/details/details.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
@@ -36,8 +47,9 @@ const routes: Route[] = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
+    CommonModule,
     LayoutModule,
     FormsModule,
     MatToolbarModule,
@@ -52,7 +64,7 @@ const routes: Route[] = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

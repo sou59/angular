@@ -1,19 +1,27 @@
+<!--affichage des données faire un ngfor faire delete et update -->
 
+  <h2>Job Details</h2>
+{{ jobs | json }}
+  <ul class="pt-5" *ngFor="let job of jobs;">
+    <li class="hidden">Id : {{ job.id }}</li>
+    <li>Title : {{ job.title }}</li>
+    <li>Company : {{ job.company }}</li>
+    <li>City : {{ job.city }}</li>
+    <li>ZipCode : {{ job.zipcode }}</li>
+    <li>Description : {{ job.description }}</li>
+    <li>Contract type : {{ job.contractType }}</li>
+    <li>Start date : {{ job.startDate | date:'dd/MM/y H:m:s'  }}</li>
+    <li>
+        <button class="btn btn-danger" (click)="deleteJob(job)">
+            Delete Job</button>
 
-<!--affichage des données faire un ngfor
-fair delete et update
--->
+        <button class="btn btn-danger" (click)="editJob(job)" style="margin-left: 20px;">
+            Edit Job</button>
+    </li>
+    <hr>
 
-<ul class="pt-5" *ngFor="let job of jobs;">
-    <li> Id :  {{ job.id }}</li>
-    <li> Title :  {{ job.title }}</li>
-    <li> Company :  {{ job.company }}</li>
-    <li> City :  {{ job.city }}</li>
-    <li> Zip Code :  {{ job.zipcode }}</li>
-    <li> Description :  {{ job.description }}</li>
-    <li> Contract type :  {{ job.contractType }}</li>
-    <li> Start date :  {{ job.startDate | date:'dd/MM/y H:m:s'  }}</li>
+  </ul>
 
- <button type="submit">Modifier</button>
-</ul>
-
+  <button class="btn btn-danger" (click)="addJob()">
+      Add Job
+  </button>
