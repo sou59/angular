@@ -2,7 +2,7 @@ import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Job } from '../models/Job';
 import { Observable } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 
 const API_BASE_URL = 'http://localhost:3000/jobs';
 
@@ -30,14 +30,31 @@ export class JobsService {
     return this.http.post(API_BASE_URL, job);
   }
 
-  find(id: number): Observable<Job> {
+  find(id: number) {
     this.http.get<Job>(API_BASE_URL + '/' + id)
-      .pipe(map(data => data));
+    .pipe(map(res => res));
   }
 
+  getSingleId(id: number) {
+    return new Promise(
+      (resolve, reject) => {
+        this.http.get<Job>(API_BASE_URL + '/' + id).then(
+          (data) => {
+            resolve(data.val());
+          }, (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
+  }
 
-  getId(index: number) {
-    //this.jobs[index].id;
+  getJob(id: number): Observable<Job> {
+    const url = `API_BASE_URL/${id}`;
+    return this.http.get<Job>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+
+    );
   }
 
   getMyId(id: Number) {

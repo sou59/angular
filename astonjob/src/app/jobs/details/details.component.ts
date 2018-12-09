@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { JobsService } from '../../services/jobs.service';
 import { Job } from 'src/app/models/Job';
 import { ActivatedRoute } from '@angular/router';
@@ -19,11 +19,13 @@ export class DetailsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    this.jobsService.find(id).subscribe(
-      data => {
-        this.job = data;
-      });
+    this.getJob();
+  }
+
+  getJob(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.jobsService.getJob(id)
+      .subscribe(job => this.job = job);
   }
 
 
