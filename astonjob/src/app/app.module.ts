@@ -27,12 +27,17 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { JobsService } from './services/jobs.service';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'jobs', component: ListComponent},
   {path: 'jobs/add', component: AddComponent},
   {path: 'jobs/:id', component: DetailsComponent},
+  { path: 'not-found', component: FourOhFourComponent },
+  { path: '**', redirectTo: 'not-found' },
+
 ];
 
 @NgModule({
@@ -42,7 +47,8 @@ const routes: Route[] = [
     AddComponent,
     ListComponent,
     DetailsComponent,
-    HomeComponent
+    HomeComponent,
+    FourOhFourComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -66,7 +72,9 @@ const routes: Route[] = [
     MatSelectModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    JobsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

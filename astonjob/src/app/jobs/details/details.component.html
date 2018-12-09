@@ -1,15 +1,19 @@
 <h1>Détail du Job</h1>
 
-{{ jobs | json }}
-<ul class="pt-5" *ngFor="let job of jobs;">
+{{ job | json }}
+<ul class="pt-5" >
     <li> Id :  {{ job.id }}</li>
-    <li> Title :  {{ job.title }}</li>
-    <li> Company :  {{ job.company }}</li>
-    <li> City :  {{ job.city }}</li>
-    <li> Zip Code :  {{ job.zipcode }}</li>
-    <li> Description :  {{ job.description }}</li>
-    <li> Contract type :  {{ job.contractType }}</li>
-    <li> Start date :  {{ job.startDate | date:'dd/MM/y H:m:s'  }}</li>
+    <li> Title : {{ job.title}}</li>
+    <li> Company : {{ job.company}} </li>
+    <li> City :  {{ job.city}}</li>
+    <li> Zip Code :  {{ job.zipcode}}</li>
+    <li> Description :  {{ job.description}}</li>
+    <li> Contract type : {{ job.contractType}}</li>
+    <li> Start date :  {{ job.startDate}}</li>
 </ul>
 
 <button type="submit">Modifier</button>
+
+
+<h4 [ngStyle]="{color: 'green'}"> Job :  -- [id]="jobs.id"</h4>
+
