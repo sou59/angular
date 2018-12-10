@@ -29,15 +29,18 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { JobsService } from './services/jobs.service';
+import { FlashmsgComponent } from './flashmsg/flashmsg.component';
+import { DeleteComponent } from './jobs/delete/delete.component';
+import { FlashmsgService } from './services/flashmsg.service';
 
 const routes: Route[] = [
-  {path: '', component: HomeComponent},
-  {path: 'jobs', component: ListComponent},
-  {path: 'jobs/add', component: AddComponent},
-  {path: 'jobs/:id', component: DetailsComponent},
+  { path: '', component: HomeComponent },
+  { path: 'jobs', component: ListComponent },
+  { path: 'jobs/add', component: AddComponent },
+  { path: 'jobs/delete/:id', component: DeleteComponent },
+  { path: 'jobs/:id', component: DetailsComponent },
   { path: 'not-found', component: FourOhFourComponent },
   { path: '**', redirectTo: 'not-found' },
-
 ];
 
 @NgModule({
@@ -49,6 +52,9 @@ const routes: Route[] = [
     DetailsComponent,
     HomeComponent,
     FourOhFourComponent,
+    FlashmsgComponent,
+    DeleteComponent,
+
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -70,10 +76,11 @@ const routes: Route[] = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
-    JobsService
+    JobsService,
+    FlashmsgService
   ],
   bootstrap: [AppComponent]
 })

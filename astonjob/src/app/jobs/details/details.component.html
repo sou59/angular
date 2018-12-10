@@ -1,19 +1,12 @@
-<h1>Détail du Job</h1>
+<mat-card>
+    <mat-card-title>{{ job.title | titlecase  }}</mat-card-title>
+    <mat-card-subtitle>{{ job.company | titlecase }}</mat-card-subtitle>
 
-{{ job | json }}
-<ul class="pt-5" >
-    <li> Id :  {{ job.id }}</li>
-    <li> Title : {{ job.title}}</li>
-    <li> Company : {{ job.company}} </li>
-    <li> City :  {{ job.city}}</li>
-    <li> Zip Code :  {{ job.zipcode}}</li>
-    <li> Description :  {{ job.description}}</li>
-    <li> Contract type : {{ job.contractType}}</li>
-    <li> Start date :  {{ job.startDate}}</li>
-</ul>
+    <mat-card-content>
+        <p>{{ job.description }}</p>
+    </mat-card-content>
 
-<button type="submit">Modifier</button>
-
-
-<h4 [ngStyle]="{color: 'green'}"> Job :  -- [id]="jobs.id"</h4>
-
+    <mat-card-actions>
+        <button mat-button routerLink="/jobs/delete/{{ job.id }}" color="warn">Supprimer</button>
+    </mat-card-actions>
+</mat-card>

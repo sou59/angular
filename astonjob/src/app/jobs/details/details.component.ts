@@ -1,8 +1,7 @@
-import { Component, OnInit, Pipe } from '@angular/core';
-import { JobsService } from '../../services/jobs.service';
+import { Component, OnInit } from '@angular/core';
+import { JobsService } from 'src/app/services/jobs.service';
 import { Job } from 'src/app/models/Job';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, Observable } from 'rxjs/';
 
 @Component({
   selector: 'app-details',
@@ -11,23 +10,24 @@ import { Subscription, Observable } from 'rxjs/';
 })
 export class DetailsComponent implements OnInit {
 
-
- // id: number;
-  job: Job;
-
+  // id: number;
+  // job: Job;
+  // objet vide
+  job = {} as Job;
+  
   constructor(private jobsService: JobsService,
-    private route: ActivatedRoute) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getJob();
-  }
+    const id = this.route.snapshot.paramMap.get('id');
 
-  getJob(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.jobsService.getJob(id)
-      .subscribe(job => this.job = job);
+    this.jobsService
+        .find(parseInt(id)).subscribe(
+          (job: Job) => {
+            this.job = job;
+          }
+    );
   }
-
 
 }
 

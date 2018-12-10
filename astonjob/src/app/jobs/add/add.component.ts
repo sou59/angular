@@ -5,6 +5,9 @@ import { contractTypes } from '../../data/jobs';
 import { ContractType } from '../../models/ContractType';
 import { JobsService } from 'src/app/services/jobs.service';
 import { Job } from 'src/app/models/Job';
+import { FlashmsgService } from 'src/app/services/flashmsg.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add',
@@ -24,7 +27,9 @@ export class AddComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private jobsService: JobsService
+    private jobsService: JobsService,
+    private flashmsgService: FlashmsgService,
+    private router: Router
     ) { }
 
   // nécéssaire quand on ira chercher des données
@@ -41,14 +46,33 @@ export class AddComponent implements OnInit {
       publishedDate: new Date()
     });
   }
-
+/*
   addJob() {
     this.jobsService// appel du service (services/jobs.service.ts)
         .add(this.form.value)// récupère les éléments du formulaire
          .subscribe(  // si tout se passe bien, en cas de réussite on peux utiliser les flash message pour dire sucess
           (job: Job) => { // type Job créer dans Job.ts
+            this.flashmsgService.add('Job ajouté', 'success');
             this.form.reset(); // vide le formulaire
-            console.log(job);
+            this.router.navigate(['/jobs']);
+          },
+          (err) => {
+            console.log("Une erreur est survenue");
+          }
+        );
+    }
+*/
+    addJob() {
+      this.jobsService
+        .add(this.form.value)
+        .subscribe(
+          (job: Job) => {
+            this.flashmsgService.add('Job ajouté', 'success');
+            this.form.reset();
+            this.router.navigate(['/jobs']);
+          },
+          (err) => {
+            console.log('Une erreur est survenue');
           }
         );
   }
